@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: archiver
+
+  cloud:
+    oci:
+      region:
+        static: us-chicago-1
+      adb:
+        enabled: false
+      queue:
+        enabled: true
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.OracleDialect
+        format_sql: true
+    show-sql: true
+
+  datasource:
+    url: jdbc:oracle:thin:@//172.17.0.2:1521/freepdb1
+    username: testuser
+    password: Welcome12345
+    driver-class-name: oracle.jdbc.OracleDriver
+    type: oracle.ucp.jdbc.PoolDataSource
+    oracleucp:
+      connection-factory-class-name: oracle.jdbc.pool.OracleDataSource
+      connection-pool-name: CustomerConnectionPool
+      initial-pool-size: 15
+      min-pool-size: 10
+      max-pool-size: 30
+
+server:
+  port: 8081
+
+myQueueId: ocid1.queue.oc1.us-chicago-1.xxx
+    
